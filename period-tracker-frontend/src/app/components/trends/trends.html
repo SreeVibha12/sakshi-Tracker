@@ -1,0 +1,57 @@
+<div class="trends-container">
+  <h2>Cycle Trends & Insights</h2>
+
+  @if (isLoading) {
+    <div class="loading">Analyzing your data...</div>
+  }
+  @if (!isLoading && error) {
+    <div class="error-message">{{ error }}</div>
+  }
+  @if (!isLoading && !error && periods.length < 2) {
+    <div class="no-data">
+      Need at least 2 periods to show trends.<br>
+      Keep logging!
+    </div>
+  }
+  @if (!isLoading && !error && periods.length >= 2) {
+    <div class="demo-note" *ngIf="isDemoData">
+      Showing sample profile data for testing. Your real trends will appear after you add more logs.
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>Avg Cycle Length</h3>
+        <div class="value">{{ avgCycleLength }} <span>days</span></div>
+      </div>
+      <div class="stat-card">
+        <h3>Avg Period Duration</h3>
+        <div class="value">{{ avgPeriodDuration }} <span>days</span></div>
+      </div>
+      <div class="stat-card">
+        <h3>Total Cycles</h3>
+        <div class="value">{{ totalPeriods }}</div>
+      </div>
+      <div class="stat-card">
+        <h3>Shortest Cycle</h3>
+        <div class="value">{{ shortestCycle }} <span>days</span></div>
+      </div>
+      <div class="stat-card">
+        <h3>Longest Cycle</h3>
+        <div class="value">{{ longestCycle }} <span>days</span></div>
+      </div>
+    </div>
+
+    <!-- Recent Periods -->
+    <h3>Recent Periods</h3>
+    <div class="history-list">
+      @for (period of periods.slice(-5).reverse(); track period._id) {
+        <div class="history-card">
+          <span class="date">{{ period.startDate | date:'mediumDate' }}</span>
+          <span class="duration">{{ calculateDuration(period.startDate, period.endDate) }} days</span>
+          @if (period.flow) {
+            <span class="flow-tag">{{ period.flow }}</span>
+          }
+        </div>
+      }
+    </div>
+  }
+</div>

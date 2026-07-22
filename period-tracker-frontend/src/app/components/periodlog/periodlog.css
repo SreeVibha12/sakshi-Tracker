@@ -1,0 +1,26 @@
+.periodlog-page { padding: 24px 16px; }
+.periodlog-card { border-radius: 28px; padding: 28px; box-shadow: 0 20px 60px rgba(33, 35, 52, 0.08); background: #fff; }
+.periodlog-header { display: flex; justify-content: space-between; gap: 20px; align-items: flex-start; margin-bottom: 28px; }
+.periodlog-header h2 { margin: 0; font-size: 2rem; }
+.subtitle { margin: 0 0 8px; color: #ff4081; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.8rem; }
+.description { margin: 0; color: #666; line-height: 1.6; }
+.pill { background: rgba(255, 64, 129, 0.12); color: #ff4081; padding: 10px 16px; border-radius: 999px; font-size: 0.9rem; font-weight: 700; }
+.periodlog-form { display: grid; gap: 18px; }
+.form-field-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.form-field { display: flex; flex-direction: column; gap: 10px; }
+.form-field label { font-weight: 700; color: #333; }
+.form-field input,
+.form-field select,
+.form-field textarea { width: 100%; padding: 14px 16px; border-radius: 16px; border: 1px solid #e7e7ea; background: #fafafa; font-size: 1rem; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus { outline: none; border-color: #ff4081; box-shadow: 0 0 0 4px rgba(255, 64, 129, 0.12); }
+.small-note { margin: 6px 0 0; font-size: 0.88rem; color: #888; }
+.form-actions { display: flex; justify-content: flex-end; }
+.btn { border-radius: 16px; padding: 14px 24px; font-weight: 700; }
+@media (max-width: 760px) {
+  .form-field-row { grid-template-columns: 1fr; }
+  .periodlog-header { flex-direction: column; align-items: stretch; }
+  .form-actions { justify-content: stretch; }
+  .btn { width: 100%; }
+}

@@ -1,0 +1,12 @@
+<header class="topbar">
+  <div class="topbar-content">
+    <span class="logo">🌸 Sakshi</span>
+    <span class="tagline">Made For Women By Women</span>
+    
+    @if (authService.isLoggedIn()) {
+      <button class="logout-btn" (click)="logout()">Logout</button>
+    }
+  </div>
+</header>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,42 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <h1>Sakshi-Made By Women For Women</h1>
+      <p>Sign in to continue tracking your cycle</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input 
+          type="email" 
+          id="email"
+          formControlName="email"
+          placeholder="you@example.com"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input 
+          type="password" 
+          id="password"
+          formControlName="password"
+          placeholder="••••••••"
+          required>
+      </div>
+
+      <button type="submit" class="login-btn" [disabled]="loginForm.invalid || isLoading">
+        {{ isLoading ? 'Signing In...' : 'Login' }}
+      </button>
+      @if (error) {
+        <p class="error-message">{{ error }}</p>
+      }
+    </form>
+
+    <div class="register-link">
+      Don't have an account? 
+      <a routerLink="/register">Create one now</a>
+    </div>
+  </div>
+</div>

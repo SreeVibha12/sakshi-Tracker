@@ -1,0 +1,33 @@
+<div class="daily-container">
+  <div class="card">
+    <h3>Daily Wellness Tracker</h3>
+    <form [formGroup]="dailyForm" (ngSubmit)="onSubmit()">
+      <div class="form-field">
+        <label>Date</label>
+        <input type="date" formControlName="date">
+      </div>
+
+      <div class="form-field">
+        <label>Water Intake (glasses)</label>
+        <input type="number" formControlName="waterIntake">
+      </div>
+
+      <div class="form-field">
+        <label>Sleep Hours</label>
+        <input type="number" formControlName="sleepHours">
+      </div>
+
+      <div class="form-field">
+        <label>Mood</label>
+        <select formControlName="mood">
+          <option value="great">Great</option>
+          <option value="good">Good</option>
+          <option value="okay">Okay</option>
+          <option value="low">Low</option>
+        </select>
+      </div>
+
+      <button class="btn btn-primary" type="submit">Save Daily Log</button>
+    </form>
+  </div>
+</div>

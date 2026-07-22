@@ -1,0 +1,50 @@
+<div class="periodlog-page container">
+  <div class="periodlog-card card">
+    <div class="periodlog-header">
+      <div>
+        <p class="subtitle">Quick note</p>
+        <h2>Log your period details</h2>
+        <p class="description">Keep track of flow, symptoms, and notes to improve your cycle insights.</p>
+      </div>
+      <div class="pill">Easy entry</div>
+    </div>
+
+    <form [formGroup]="logForm" (ngSubmit)="onSubmit()" class="periodlog-form">
+      <div class="form-field-row">
+        <div class="form-field half-width">
+          <label>Start date</label>
+          <input type="date" formControlName="startDate">
+        </div>
+
+        <div class="form-field half-width">
+          <label>Flow</label>
+          <select formControlName="flow">
+            <option value="light">Light</option>
+            <option value="medium">Medium</option>
+            <option value="heavy">Heavy</option>
+            <option value="spotting">Spotting</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label>Symptoms</label>
+        <select formControlName="symptoms" multiple>
+          @for (sym of symptomsList; track sym) {
+            <option [value]="sym">{{ sym }}</option>
+          }
+        </select>
+        <p class="small-note">Hold Ctrl / Cmd to select multiple symptoms.</p>
+      </div>
+
+      <div class="form-field">
+        <label>Notes</label>
+        <textarea formControlName="notes" rows="4" placeholder="Add a quick note about how you felt..."></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Save period log</button>
+      </div>
+    </form>
+  </div>
+</div>

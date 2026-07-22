@@ -1,0 +1,32 @@
+.dashboard { padding: 24px 16px; }
+.dashboard-header, .dashboard-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 24px; }
+.dashboard-grid { display: grid; gap: 20px; grid-template-columns: repeat(2, minmax(220px, 1fr)); margin: 24px 0; }
+.overview-card, .accent-card, .insights-card, .dashboard-footer { background: #ffffff; border-radius: 24px; box-shadow: 0 18px 50px rgba(33, 35, 52, 0.06); }
+.overview-card { padding: 28px; }
+.accent-card { background: linear-gradient(135deg, #ff4081 0%, #f06292 100%); color: white; }
+.overview-label { text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.12em; color: #888; margin-bottom: 12px; }
+.overview-value { font-size: 3rem; font-weight: 700; margin-bottom: 12px; }
+.overview-note { color: #666; line-height: 1.5; }
+.insights-card { grid-column: span 2; padding: 26px; }
+.insights-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.insights-header h3 { margin: 0; }
+.badge { display: inline-flex; padding: 8px 12px; border-radius: 999px; background: rgba(255, 64, 129, 0.12); color: #e91e63; font-size: 0.85rem; font-weight: 700; }
+.insights-card ul { padding-left: 18px; margin: 0; color: #444; }
+.insights-card li { margin-bottom: 10px; font-size: 0.98rem; line-height: 1.6; }
+.dashboard-actions-row, .action-list { display: flex; flex-wrap: wrap; gap: 12px; }
+.dashboard-footer { flex-direction: column; align-items: flex-start; }
+.dashboard-footer h3 { margin: 0 0 14px 0; }
+.btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 18px; border-radius: 14px; border: none; outline: none; transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease; font-weight: 700; }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 14px 32px rgba(0, 0, 0, 0.08); }
+.btn-primary { background: #ff4081; color: #fff; }
+.btn-accent { background: #6200ea; color: #fff; }
+.btn:not(.btn-primary):not(.btn-accent) { background: #f4f4f6; color: #222; }
+@media (max-width: 860px) {
+  .dashboard-grid { grid-template-columns: 1fr; }
+  .dashboard-header, .dashboard-footer { flex-direction: column; align-items: stretch; }
+}
+@media (max-width: 520px) {
+  .dashboard { padding: 16px 12px; }
+  .overview-value { font-size: 2.5rem; }
+  .btn { width: 100%; }
+}

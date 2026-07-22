@@ -1,0 +1,10 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 64px);
+  background: linear-gradient(135deg, #f8e1e7, #e3f2fd);
+}
+.card { max-width: 420px; padding: 20px; }
+.error { color: red; }
+.success { color: green; }

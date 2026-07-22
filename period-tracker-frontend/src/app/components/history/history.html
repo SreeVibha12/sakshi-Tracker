@@ -1,0 +1,72 @@
+<div class="history-container">
+  <h2>Period History</h2>
+
+  <!-- Filters -->
+  <div class="filters">
+    <button 
+      [class.active]="filter === 'all'" 
+      (click)="onFilterChange('all')">
+      All
+    </button>
+    <button 
+      [class.active]="filter === 'last6months'" 
+      (click)="onFilterChange('last6months')">
+      Last 6 Months
+    </button>
+    <button 
+      [class.active]="filter === 'lastYear'" 
+      (click)="onFilterChange('lastYear')">
+      Last Year
+    </button>
+  </div>
+
+  @if (isLoading) {
+    <div class="loading">Loading your history...</div>
+  }
+
+  @if (error) {
+    <div class="error-message">{{ error }}</div>
+  }
+
+  @if (!isLoading && periodHistory.length === 0) {
+    <div class="no-data">
+      No period records found yet.
+    </div>
+  }
+
+  @if (!isLoading && periodHistory.length > 0) {
+    <div class="history-list">
+      @for (period of periodHistory; track period._id) {
+        <div class="history-card">
+          <div class="header">
+            <span class="date">
+              {{ period.startDate | date:'mediumDate' }}
+              @if (period.endDate) {
+                — {{ period.endDate | date:'mediumDate' }}
+              }
+            </span>
+            <span class="duration">
+              {{ calculateDuration(period.startDate, period.endDate) }} days
+            </span>
+          </div>
+
+          <div class="details">
+            @if (period.flow) {
+              <p><strong>Flow:</strong> {{ period.flow }}</p>
+            }
+            @if (period.symptoms.length) {
+              <p><strong>Symptoms:</strong> {{ period.symptoms.join(', ') }}</p>
+            }
+            @if (period.notes) {
+              <p><strong>Notes:</strong> {{ period.notes }}</p>
+            }
+          </div>
+
+          <button class="delete-btn" (click)="deleteEntry(period._id!)">
+            🗑️
+          </button>
+        </div>
+      }
+    </div>
+  }
+</div>
